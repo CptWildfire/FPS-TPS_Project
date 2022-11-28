@@ -191,6 +191,12 @@ ReflectionProbe:
   m_UseOcclusionCulling: 1
   m_Importance: 1
   m_CustomBakedTexture: {fileID: 0}
+--- !u!1 &726105223 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6026775692909418041, guid: 582d65e858b18cc4c833ecf092581445,
+    type: 3}
+  m_PrefabInstance: {fileID: 5701010913114974893}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &874605735
 GameObject:
   m_ObjectHideFlags: 0
@@ -523,6 +529,18 @@ Transform:
   m_Father: {fileID: 2114283753834967213}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1036444349 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6521671936069742976, guid: 51ee14ec6aedc5f4eafccfa5be2366d9,
+    type: 3}
+  m_PrefabInstance: {fileID: 5065078208335217028}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1130249509 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2782935894566533722, guid: 33bc8d4853a0a024da8e1466ab57ffa1,
+    type: 3}
+  m_PrefabInstance: {fileID: 4189366643439411236}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1764214107
 GameObject:
   m_ObjectHideFlags: 0
@@ -757,30 +775,40 @@ PrefabInstance:
       propertyPath: m_Name
       value: FPSCamera
       objectReference: {fileID: 0}
+    - target: {fileID: 2782935894566533722, guid: 33bc8d4853a0a024da8e1466ab57ffa1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2782935894566534052, guid: 33bc8d4853a0a024da8e1466ab57ffa1,
         type: 3}
       propertyPath: m_Follow
       value: 
-      objectReference: {fileID: 8338988565591873055}
+      objectReference: {fileID: 1036444349}
+    - target: {fileID: 2782935894566534052, guid: 33bc8d4853a0a024da8e1466ab57ffa1,
+        type: 3}
+      propertyPath: m_Lens.NearClipPlane
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 2782935894566534053, guid: 33bc8d4853a0a024da8e1466ab57ffa1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2782935894566534053, guid: 33bc8d4853a0a024da8e1466ab57ffa1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.20000005
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2782935894566534053, guid: 33bc8d4853a0a024da8e1466ab57ffa1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.375
+      value: 1.6767181
       objectReference: {fileID: 0}
     - target: {fileID: 2782935894566534053, guid: 33bc8d4853a0a024da8e1466ab57ffa1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4
+      value: 0.09343271
       objectReference: {fileID: 0}
     - target: {fileID: 2782935894566534053, guid: 33bc8d4853a0a024da8e1466ab57ffa1,
         type: 3}
@@ -817,6 +845,36 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2782935895063054949, guid: 33bc8d4853a0a024da8e1466ab57ffa1,
+        type: 3}
+      propertyPath: Damping.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2782935895063054949, guid: 33bc8d4853a0a024da8e1466ab57ffa1,
+        type: 3}
+      propertyPath: Damping.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2782935895063054949, guid: 33bc8d4853a0a024da8e1466ab57ffa1,
+        type: 3}
+      propertyPath: Damping.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2782935895063054949, guid: 33bc8d4853a0a024da8e1466ab57ffa1,
+        type: 3}
+      propertyPath: CameraSide
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2782935895063054949, guid: 33bc8d4853a0a024da8e1466ab57ffa1,
+        type: 3}
+      propertyPath: CameraDistance
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2782935895063054949, guid: 33bc8d4853a0a024da8e1466ab57ffa1,
+        type: 3}
+      propertyPath: ShoulderOffset.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33bc8d4853a0a024da8e1466ab57ffa1, type: 3}
 --- !u!1001 &5065078208335217028
@@ -831,10 +889,20 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 1968088877}
+    - target: {fileID: 277234738299119831, guid: 51ee14ec6aedc5f4eafccfa5be2366d9,
+        type: 3}
+      propertyPath: fpsView.cameraFollow
+      value: 
+      objectReference: {fileID: 1130249509}
+    - target: {fileID: 277234738299119831, guid: 51ee14ec6aedc5f4eafccfa5be2366d9,
+        type: 3}
+      propertyPath: tpsView.cameraFollow
+      value: 
+      objectReference: {fileID: 726105223}
     - target: {fileID: 8092132596752118909, guid: 51ee14ec6aedc5f4eafccfa5be2366d9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8092132596752118909, guid: 51ee14ec6aedc5f4eafccfa5be2366d9,
         type: 3}
@@ -904,6 +972,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TPSCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 6026775692909418041, guid: 582d65e858b18cc4c833ecf092581445,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6026775692909418438, guid: 582d65e858b18cc4c833ecf092581445,
         type: 3}
@@ -1033,6 +1106,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 1197904921512442807, guid: 380763a760f1bbe4bbc30fc7e9328e42,
+        type: 3}
+      propertyPath: near clip plane
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1243110242402748328, guid: 380763a760f1bbe4bbc30fc7e9328e42,
+        type: 3}
+      propertyPath: m_DefaultBlend.m_Time
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 380763a760f1bbe4bbc30fc7e9328e42, type: 3}
