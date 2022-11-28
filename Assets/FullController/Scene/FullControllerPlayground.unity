@@ -588,6 +588,12 @@ ReflectionProbe:
   m_UseOcclusionCulling: 1
   m_Importance: 1
   m_CustomBakedTexture: {fileID: 0}
+--- !u!1 &1968088877 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1197904921512442805, guid: 380763a760f1bbe4bbc30fc7e9328e42,
+    type: 3}
+  m_PrefabInstance: {fileID: 7836116984109608436}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2114283753834967212
 GameObject:
   m_ObjectHideFlags: 0
@@ -820,6 +826,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 277234738299119831, guid: 51ee14ec6aedc5f4eafccfa5be2366d9,
+        type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1968088877}
     - target: {fileID: 8092132596752118909, guid: 51ee14ec6aedc5f4eafccfa5be2366d9,
         type: 3}
       propertyPath: m_RootOrder

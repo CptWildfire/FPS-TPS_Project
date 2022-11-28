@@ -2336,9 +2336,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8092132596752118909}
+  - component: {fileID: 8700726711458727020}
+  - component: {fileID: 5032718820151681123}
+  - component: {fileID: 277234738299119831}
   - component: {fileID: 2786931493941358087}
-  - component: {fileID: 8865009404176805581}
-  - component: {fileID: 8865009404176805579}
+  - component: {fileID: 6687642450372655544}
   m_Layer: 8
   m_Name: FullCharacter
   m_TagString: Player
@@ -2353,7 +2355,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8865009404176805575}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2364,6 +2366,65 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!143 &8700726711458727020
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8865009404176805575}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 1.8
+  m_Radius: 0.28
+  m_SlopeLimit: 45
+  m_StepOffset: 0.25
+  m_SkinWidth: 0.02
+  m_MinMoveDistance: 0
+  m_Center: {x: 0, y: 0.93, z: 0}
+--- !u!114 &5032718820151681123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8865009404176805575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 999d40c1a64043b9b41363cd42798ade, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &277234738299119831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8865009404176805575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a162980b65714873a12ae4aaeb815545, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableComponent: 0
+  moveSpeed: 2
+  rotationSpeed: 0
+  SpeedChangeRate: 10
+  canMove: 1
+  jumpForce: 1
+  groundedMask:
+    serializedVersion: 2
+    m_Bits: 2147483647
+  grounded: 0
+  cinemachineCameraRoot: {fileID: 3886830917326559132}
+  mainCamera: {fileID: 0}
+  CameraAngleOverride: 0
+  rotationSmoothTime: 0.12
+  topClamp: 70
+  bottomClamp: -30
+  controller: {fileID: 8700726711458727020}
 --- !u!95 &2786931493941358087
 Animator:
   serializedVersion: 4
@@ -2384,25 +2445,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!143 &8865009404176805581
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8865009404176805575}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 1.8
-  m_Radius: 0.28
-  m_SlopeLimit: 45
-  m_StepOffset: 0.25
-  m_SkinWidth: 0.02
-  m_MinMoveDistance: 0
-  m_Center: {x: 0, y: 0.93, z: 0}
---- !u!114 &8865009404176805579
+--- !u!114 &6687642450372655544
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2429,13 +2472,56 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 277234738299119831}
+        m_TargetAssemblyTypeName: FullController.Scripts.Player.FullPlayerController,
+          Assembly-CSharp
+        m_MethodName: InputMoveCallback
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: c86c6b6f-a997-4d88-8640-4ba16916a768
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 277234738299119831}
+        m_TargetAssemblyTypeName: FullController.Scripts.Player.FullPlayerController,
+          Assembly-CSharp
+        m_MethodName: InputLookCallback
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 7febd7ad-efd6-4911-9a4f-ed6eed37f2cc
     m_ActionName: Player/Look[/Mouse/delta]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 277234738299119831}
+        m_TargetAssemblyTypeName: FullController.Scripts.Player.FullPlayerController,
+          Assembly-CSharp
+        m_MethodName: InputJumpCallback
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 66f0df75-a592-4256-8efa-0d6f4b089c87
+    m_ActionName: Player/Jump[/Keyboard/space]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: c5227414-be48-4793-a19c-cbf8d6e8c3a5
@@ -2480,6 +2566,23 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 182edfe0-9eed-4907-8090-1d3f84704749
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 277234738299119831}
+        m_TargetAssemblyTypeName: FullController.Scripts.Player.FullPlayerController,
+          Assembly-CSharp
+        m_MethodName: InputFreeLookCallback
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 582a965e-2ae5-4d93-a29b-384bfdaa95ed
+    m_ActionName: Player/Freelook[/Keyboard/alt]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
