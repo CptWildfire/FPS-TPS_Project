@@ -2410,14 +2410,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   disableComponent: 0
   moveSpeed: 2
+  sprintSpeed: 6
   rotationSpeed: 0
   SpeedChangeRate: 10
   canMove: 1
-  jumpForce: 1
+  jumpHeight: 1.2
+  gravity: -15
+  jumpTimeOut: 0.3
+  fallTimeOut: 0.15
+  groundedOffset: -0.14
+  groundedRadius: 0.28
   groundedMask:
     serializedVersion: 2
-    m_Bits: 2147483647
-  grounded: 0
+    m_Bits: 1
   cinemachineCameraRoot: {fileID: 3886830917326559132}
   mainCamera: {fileID: 0}
   CameraAngleOverride: 0
@@ -2425,6 +2430,7 @@ MonoBehaviour:
   topClamp: 70
   bottomClamp: -30
   controller: {fileID: 8700726711458727020}
+  animator: {fileID: 2786931493941358087}
 --- !u!95 &2786931493941358087
 Animator:
   serializedVersion: 4
@@ -2435,7 +2441,7 @@ Animator:
   m_GameObject: {fileID: 8865009404176805575}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 36078ab0369161e49a29d349ae3e0739, type: 3}
-  m_Controller: {fileID: 9100000, guid: 40db3173a05ae3242b1c182a09b0a183, type: 2}
+  m_Controller: {fileID: 9100000, guid: c30c1c5e150752747b1c43540eb95705, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2583,6 +2589,23 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 582a965e-2ae5-4d93-a29b-384bfdaa95ed
     m_ActionName: Player/Freelook[/Keyboard/alt]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 277234738299119831}
+        m_TargetAssemblyTypeName: FullController.Scripts.Player.FullPlayerController,
+          Assembly-CSharp
+        m_MethodName: InputSprintCallback
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 42bb8d2a-bb12-4aff-8a88-361fa30e35e4
+    m_ActionName: Player/Sprint[/Keyboard/leftShift]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
