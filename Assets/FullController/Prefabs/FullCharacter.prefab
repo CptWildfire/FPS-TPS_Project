@@ -2477,13 +2477,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableComponent: 0
+  mainCamera: {fileID: 0}
+  aimSphere: {fileID: 0}
+  aimLayers:
+    serializedVersion: 2
+    m_Bits: 2147483647
   views:
   - viewMod: 0
     cameraFollow: {fileID: 0}
     cameraRoot: {fileID: 3886830917326559132}
   - viewMod: 1
     cameraFollow: {fileID: 0}
-    cameraRoot: {fileID: 0}
+    cameraRoot: {fileID: 3886830917326559132}
   - viewMod: 2
     cameraFollow: {fileID: 0}
     cameraRoot: {fileID: 5327657316121032259}

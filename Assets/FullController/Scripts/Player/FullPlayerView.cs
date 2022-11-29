@@ -8,6 +8,9 @@ namespace FullController.Scripts.Player
 {
     public class FullPlayerView : FullPlayerComponent
     {
+        public Camera mainCamera = null;
+        public Transform aimSphere = null;
+        public LayerMask aimLayers = new LayerMask();
         public List<ViewData> views = new List<ViewData>();
 
         private ViewData currentView = null;
@@ -38,6 +41,11 @@ namespace FullController.Scripts.Player
             
         }
 
+        private void Update()
+        {
+            UpdateAimFeedBack();
+        }
+
         private void ChangePlayerView()
         {
             if (currentView.viewMod == ViewMod.Tps)
@@ -49,7 +57,6 @@ namespace FullController.Scripts.Player
             currentView.ToggleCamera(true);
             fullPlayer.controller.ChangeCameraRoot(currentView.cameraRoot);
         }
-        
         private void PlayerAim(bool isAim)
         {
             if (isAim)
@@ -67,6 +74,16 @@ namespace FullController.Scripts.Player
                 views.ForEach(v => v.ToggleCamera(false));
                 currentView.ToggleCamera(true);
                 fullPlayer.controller.ChangeCameraRoot(currentView.cameraRoot);
+            }
+        }
+
+        private void UpdateAimFeedBack()
+        {
+            Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if (Physics.Raycast(ray, out hit, 1000, aimLayers))
+            {
+                aimSphere.transform.position = hit.point;
             }
         }
 
