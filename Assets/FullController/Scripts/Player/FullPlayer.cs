@@ -6,6 +6,7 @@ namespace FullController.Scripts.Player
     public class FullPlayer : MonoBehaviour
     {
         public FullPlayerController controller { get; private set; }
+        public FullPlayerView view { get; private set; }
 
         private void Start()
         {
@@ -18,6 +19,7 @@ namespace FullController.Scripts.Player
         private void InitializeComponents()
         {
             controller ??= GetComponent<FullPlayerController>().Initialize(this) as FullPlayerController;
+            view ??= GetComponent<FullPlayerView>().Initialize(this) as FullPlayerView;
         }
     }
 }

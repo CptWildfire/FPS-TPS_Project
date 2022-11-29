@@ -889,16 +889,6 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 1968088877}
-    - target: {fileID: 277234738299119831, guid: 51ee14ec6aedc5f4eafccfa5be2366d9,
-        type: 3}
-      propertyPath: fpsView.cameraFollow
-      value: 
-      objectReference: {fileID: 1130249509}
-    - target: {fileID: 277234738299119831, guid: 51ee14ec6aedc5f4eafccfa5be2366d9,
-        type: 3}
-      propertyPath: tpsView.cameraFollow
-      value: 
-      objectReference: {fileID: 726105223}
     - target: {fileID: 8092132596752118909, guid: 51ee14ec6aedc5f4eafccfa5be2366d9,
         type: 3}
       propertyPath: m_RootOrder
@@ -954,6 +944,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8116203083024208263, guid: 51ee14ec6aedc5f4eafccfa5be2366d9,
+        type: 3}
+      propertyPath: views.Array.data[0].cameraFollow
+      value: 
+      objectReference: {fileID: 726105223}
+    - target: {fileID: 8116203083024208263, guid: 51ee14ec6aedc5f4eafccfa5be2366d9,
+        type: 3}
+      propertyPath: views.Array.data[2].cameraFollow
+      value: 
+      objectReference: {fileID: 1130249509}
     - target: {fileID: 8865009404176805575, guid: 51ee14ec6aedc5f4eafccfa5be2366d9,
         type: 3}
       propertyPath: m_Name

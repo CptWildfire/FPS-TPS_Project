@@ -2371,6 +2371,7 @@ GameObject:
   - component: {fileID: 8700726711458727020}
   - component: {fileID: 5032718820151681123}
   - component: {fileID: 277234738299119831}
+  - component: {fileID: 8116203083024208263}
   - component: {fileID: 2786931493941358087}
   - component: {fileID: 6687642450372655544}
   m_Layer: 8
@@ -2459,18 +2460,36 @@ MonoBehaviour:
   mainCamera: {fileID: 0}
   CameraAngleOverride: 0
   rotationSmoothTime: 0.12
-  tpsView:
-    viewMod: 0
-    cameraFollow: {fileID: 0}
-    cameraRoot: {fileID: 3886830917326559132}
-  fpsView:
-    viewMod: 1
-    cameraFollow: {fileID: 0}
-    cameraRoot: {fileID: 5327657316121032259}
   topClamp: 70
   bottomClamp: -30
   controller: {fileID: 8700726711458727020}
   animator: {fileID: 2786931493941358087}
+--- !u!114 &8116203083024208263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8865009404176805575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc8132e853bd4d8b8f2c20eed5f8077d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableComponent: 0
+  views:
+  - viewMod: 0
+    cameraFollow: {fileID: 0}
+    cameraRoot: {fileID: 3886830917326559132}
+  - viewMod: 1
+    cameraFollow: {fileID: 0}
+    cameraRoot: {fileID: 0}
+  - viewMod: 2
+    cameraFollow: {fileID: 0}
+    cameraRoot: {fileID: 5327657316121032259}
+  - viewMod: 3
+    cameraFollow: {fileID: 0}
+    cameraRoot: {fileID: 0}
 --- !u!95 &2786931493941358087
 Animator:
   serializedVersion: 4
@@ -2648,10 +2667,9 @@ MonoBehaviour:
     m_ActionName: Player/Sprint[/Keyboard/leftShift]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 277234738299119831}
-        m_TargetAssemblyTypeName: FullController.Scripts.Player.FullPlayerController,
-          Assembly-CSharp
-        m_MethodName: InputViewCallback
+      - m_Target: {fileID: 8116203083024208263}
+        m_TargetAssemblyTypeName: FullController.Scripts.Player.FullPlayerView, Assembly-CSharp
+        m_MethodName: InputChangeViewCallback
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

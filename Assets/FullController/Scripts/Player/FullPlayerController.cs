@@ -29,8 +29,6 @@ namespace FullController.Scripts.Player
         [SerializeField] private GameObject mainCamera = null;
         [SerializeField] private float CameraAngleOverride;
         [SerializeField, Range(0.0f, 0.3f)] private float rotationSmoothTime = 0.12f;
-        [SerializeField] private FullPlayerView tpsView;
-        [SerializeField] private FullPlayerView fpsView;
         [SerializeField] private float topClamp = 90f;
         [SerializeField] private float bottomClamp = -90f;
 
@@ -65,8 +63,7 @@ namespace FullController.Scripts.Player
         private float fallTimeoutDelta;
 
         private float animationBlend;
-
-        private FullPlayerView.ViewMod currentMode = FullPlayerView.ViewMod.Tps;
+        
 
         #region Inputs
 
@@ -103,16 +100,12 @@ namespace FullController.Scripts.Player
                 isSprint = callback.action.IsPressed();
             }
         }
-
-        public void InputViewCallback(InputAction.CallbackContext callback)
-        {
-            if (callback.performed || callback.canceled)
-            {
-                if (callback.action.IsPressed()) ChangePlayerView();
-            }
-        }
-
         #endregion
+
+        public void ChangeCameraRoot(GameObject cameraRoot)
+        {
+            cinemachineCameraRoot = cameraRoot;
+        }
 
         private void Update()
         {
@@ -237,28 +230,6 @@ namespace FullController.Scripts.Player
                 verticalVelocity += gravity * Time.deltaTime;
             }
         }
-        
-        private void ChangePlayerView()
-        {
-            if (currentMode == FullPlayerView.ViewMod.Tps) 
-                currentMode = FullPlayerView.ViewMod.Fps;
-            else 
-                currentMode = FullPlayerView.ViewMod.Tps;
-
-            if (currentMode == FullPlayerView.ViewMod.Fps)
-            {
-                tpsView.cameraFollow.SetActive(false);
-                fpsView.cameraFollow.SetActive(true);
-                cinemachineCameraRoot = fpsView.cameraRoot;
-            }
-            
-            if (currentMode == FullPlayerView.ViewMod.Tps)
-            {
-                fpsView.cameraFollow.SetActive(false);
-                tpsView.cameraFollow.SetActive(true);
-                cinemachineCameraRoot = tpsView.cameraRoot;
-            }
-        }
 
         private float ClampAngle(float lfAngle, float lfMin, float lfMax)
         {
@@ -275,20 +246,6 @@ namespace FullController.Scripts.Player
         private void OnLand(AnimationEvent animationEvent)
         {
             
-        }
-        
-        [Serializable]
-        public class FullPlayerView
-        {
-            public ViewMod viewMod = ViewMod.Tps;
-            public GameObject cameraFollow;
-            public GameObject cameraRoot;
-
-            public enum ViewMod
-            {
-                Tps,
-                Fps
-            }
         }
     }
 }
