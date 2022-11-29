@@ -25,7 +25,7 @@ namespace FullController.Scripts.Player
         {
             if (callback.performed || callback.canceled)
             {
-                if (callback.action.IsPressed()) PlayerAim();
+                PlayerAim(callback.action.IsPressed());
             }
         }
 
@@ -50,9 +50,24 @@ namespace FullController.Scripts.Player
             fullPlayer.controller.ChangeCameraRoot(currentView.cameraRoot);
         }
         
-        private void PlayerAim()
+        private void PlayerAim(bool isAim)
         {
-            
+            if (isAim)
+            {
+                currentView = views.First(v => v.viewMod == ViewMod.Tps_Aim);
+
+                views.ForEach(v => v.ToggleCamera(false));
+                currentView.ToggleCamera(true);
+                fullPlayer.controller.ChangeCameraRoot(currentView.cameraRoot);
+            }
+            else
+            {
+                currentView = views.First(v => v.viewMod == ViewMod.Tps);
+
+                views.ForEach(v => v.ToggleCamera(false));
+                currentView.ToggleCamera(true);
+                fullPlayer.controller.ChangeCameraRoot(currentView.cameraRoot);
+            }
         }
 
         [Serializable]
