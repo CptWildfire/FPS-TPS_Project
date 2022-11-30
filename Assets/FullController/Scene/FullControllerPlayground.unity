@@ -126,6 +126,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &310434917 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2408141810012760588, guid: 51ee14ec6aedc5f4eafccfa5be2366d9,
+    type: 3}
+  m_PrefabInstance: {fileID: 5065078208335217028}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &532055396
 GameObject:
   m_ObjectHideFlags: 0
@@ -611,12 +617,6 @@ Transform:
   m_Father: {fileID: 2114283753834967213}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1036444349 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6521671936069742976, guid: 51ee14ec6aedc5f4eafccfa5be2366d9,
-    type: 3}
-  m_PrefabInstance: {fileID: 5065078208335217028}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1130249509 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2782935894566533722, guid: 33bc8d4853a0a024da8e1466ab57ffa1,
@@ -1200,7 +1200,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Follow
       value: 
-      objectReference: {fileID: 1036444349}
+      objectReference: {fileID: 310434917}
     - target: {fileID: 2782935894566534052, guid: 33bc8d4853a0a024da8e1466ab57ffa1,
         type: 3}
       propertyPath: m_Lens.NearClipPlane
@@ -1305,6 +1305,11 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 1968088877}
+    - target: {fileID: 2786931493941358087, guid: 51ee14ec6aedc5f4eafccfa5be2366d9,
+        type: 3}
+      propertyPath: m_WarningMessage
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8092132596752118909, guid: 51ee14ec6aedc5f4eafccfa5be2366d9,
         type: 3}
       propertyPath: m_RootOrder

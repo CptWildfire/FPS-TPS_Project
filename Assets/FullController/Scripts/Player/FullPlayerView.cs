@@ -9,6 +9,7 @@ namespace FullController.Scripts.Player
     public class FullPlayerView : FullPlayerComponent
     {
         public Camera mainCamera = null;
+        public Animator animator = null;
         public Transform aimSphere = null;
         public LayerMask aimLayers = new LayerMask();
         public List<ViewData> views = new List<ViewData>();
@@ -66,6 +67,8 @@ namespace FullController.Scripts.Player
                 views.ForEach(v => v.ToggleCamera(false));
                 currentView.ToggleCamera(true);
                 fullPlayer.controller.ChangeCameraRoot(currentView.cameraRoot);
+                
+                animator.SetLayerWeight(1, 1f);
             }
             else
             {
@@ -74,6 +77,7 @@ namespace FullController.Scripts.Player
                 views.ForEach(v => v.ToggleCamera(false));
                 currentView.ToggleCamera(true);
                 fullPlayer.controller.ChangeCameraRoot(currentView.cameraRoot);
+                animator.SetLayerWeight(1, 0f);
             }
 
             fullPlayer.controller.rotateOnMove = !isAim;
