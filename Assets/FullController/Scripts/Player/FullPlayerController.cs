@@ -37,6 +37,7 @@ namespace FullController.Scripts.Player
         [SerializeField] private Animator animator = null;
 
         public Vector2 direction { get; private set; }
+        public bool rotateOnMove;
 
         private float speed = 0f;
 
@@ -56,6 +57,7 @@ namespace FullController.Scripts.Player
         private float cinemachineTargetPitch;
         private float cinemachineTargetYaw;
 
+        private float movementRotation = 0.0f;
         private float targetRotation = 0.0f;
         private float terminalVelocity = 53.0f;
         
@@ -63,7 +65,7 @@ namespace FullController.Scripts.Player
         private float fallTimeoutDelta;
 
         private float animationBlend;
-        
+
 
         #region Inputs
 
@@ -149,13 +151,23 @@ namespace FullController.Scripts.Player
 
             if (!freeLook)
             {
-                targetRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + mainCamera.transform.eulerAngles.y;
-                float rotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetRotation, ref rotationVelocity, rotationSmoothTime);
-
-                transform.rotation = Quaternion.Euler(0f, rotation, 0f);
+                movementRotation = Mathf.Atan2(inputDirection.x, inputDirection.z) * Mathf.Rad2Deg + mainCamera.transform.eulerAngles.y;
+                
+                if (rotateOnMove)
+                {
+                    float movRotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, movementRotation, ref rotationVelocity, rotationSmoothTime);
+                    transform.rotation = Quaternion.Euler(0f, movRotation, 0f);
+                }
+                else
+                {
+                    targetRotation = mainCamera.transform.eulerAngles.y;
+                    float aimRotation = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetRotation, ref rotationVelocity, rotationSmoothTime);
+                    
+                    transform.rotation = Quaternion.Euler(0f, aimRotation, 0f);
+                }
             }
 
-            Vector3 targetDirection = Quaternion.Euler(0f, targetRotation, 0f) * Vector3.forward;
+            Vector3 targetDirection = Quaternion.Euler(0f, movementRotation, 0f) * Vector3.forward;
             controller.Move(targetDirection.normalized * (speed * Time.deltaTime) + new Vector3(0f, verticalVelocity, 0f) * Time.deltaTime);
 
             animator.SetFloat("Speed", animationBlend);

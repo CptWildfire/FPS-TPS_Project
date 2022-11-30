@@ -75,6 +75,8 @@ namespace FullController.Scripts.Player
                 currentView.ToggleCamera(true);
                 fullPlayer.controller.ChangeCameraRoot(currentView.cameraRoot);
             }
+
+            fullPlayer.controller.rotateOnMove = !isAim;
         }
 
         private void UpdateAimFeedBack()
