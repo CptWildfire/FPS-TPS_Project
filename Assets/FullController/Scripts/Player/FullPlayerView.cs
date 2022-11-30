@@ -2,12 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 namespace FullController.Scripts.Player
 {
     public class FullPlayerView : FullPlayerComponent
     {
+        public UnityEvent<bool> onTpsAim;
+
         public Camera mainCamera = null;
         public Animator animator = null;
         public Transform aimSphere = null;
@@ -79,6 +82,8 @@ namespace FullController.Scripts.Player
                 fullPlayer.controller.ChangeCameraRoot(currentView.cameraRoot);
                 animator.SetLayerWeight(1, 0f);
             }
+            
+            onTpsAim?.Invoke(isAim);
 
             fullPlayer.controller.rotateOnMove = !isAim;
         }
