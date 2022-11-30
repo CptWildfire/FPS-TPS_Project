@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 61c36afa76f0d3f48b3319ad52ba3229
+guid: 2284f6a833d01eb45ad31ec1aed11337
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable:
   - first:
       74: -203655887218126122
+    second: Rifle Aiming Idle (2)
+  - first:
+      74: -5099603970213671239
     second: Rifle Aiming Idle
   externalObjects: {}
   materials:
@@ -27,7 +30,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -40,7 +43,7 @@ ModelImporter:
       takeName: mixamo.com
       internalID: 0
       firstFrame: 0
-      lastFrame: 93
+      lastFrame: 299
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -54,7 +57,7 @@ ModelImporter:
       loopBlendPositionXZ: 1
       keepOriginalOrientation: 1
       keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 1
+      keepOriginalPositionXZ: 0
       heightFromFeet: 0
       mirror: 0
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000

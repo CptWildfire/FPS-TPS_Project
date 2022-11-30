@@ -9,6 +9,7 @@ namespace FullController.Scripts.Player
 {
     public class FullPlayerView : FullPlayerComponent
     {
+        public UnityEvent<ViewMod> onViewChanged = null;
         public UnityEvent<bool> onTpsAim;
 
         public Camera mainCamera = null;
@@ -18,7 +19,7 @@ namespace FullController.Scripts.Player
         public List<ViewData> views = new List<ViewData>();
 
         private ViewData currentView = null;
-        
+
         #region Inputs
 
         public void InputChangeViewCallback(InputAction.CallbackContext callback)
@@ -28,6 +29,7 @@ namespace FullController.Scripts.Player
                 if (callback.action.IsPressed()) ChangePlayerView();
             }
         }
+
         public void InputAimCallback(InputAction.CallbackContext callback)
         {
             if (callback.performed || callback.canceled)
@@ -42,7 +44,6 @@ namespace FullController.Scripts.Player
         {
             currentView = views.FirstOrDefault(v => v.viewMod == ViewMod.Tps);
             return base.Initialize(fullPlayer);
-            
         }
 
         private void Update()
@@ -53,39 +54,48 @@ namespace FullController.Scripts.Player
         private void ChangePlayerView()
         {
             if (currentView.viewMod == ViewMod.Tps)
-                currentView = views.First(v => v.viewMod == ViewMod.Fps);
+                SwitchView(ViewMod.Fps);
             else
-                currentView = views.First(v => v.viewMod == ViewMod.Tps);
-
-            views.ForEach(v => v.ToggleCamera(false));
-            currentView.ToggleCamera(true);
-            fullPlayer.controller.ChangeCameraRoot(currentView.cameraRoot);
+                SwitchView(ViewMod.Tps);
         }
+
         private void PlayerAim(bool isAim)
         {
             if (isAim)
             {
-                currentView = views.First(v => v.viewMod == ViewMod.Tps_Aim);
+                if (currentView.viewMod == ViewMod.Tps)
+                {
+                    SwitchView(ViewMod.Tps_Aim);
+                }
 
-                views.ForEach(v => v.ToggleCamera(false));
-                currentView.ToggleCamera(true);
-                fullPlayer.controller.ChangeCameraRoot(currentView.cameraRoot);
-                
                 animator.SetLayerWeight(1, 1f);
             }
             else
             {
-                currentView = views.First(v => v.viewMod == ViewMod.Tps);
+                if (currentView.viewMod == ViewMod.Tps_Aim)
+                {
+                    SwitchView(ViewMod.Tps);
+                }
 
-                views.ForEach(v => v.ToggleCamera(false));
-                currentView.ToggleCamera(true);
-                fullPlayer.controller.ChangeCameraRoot(currentView.cameraRoot);
                 animator.SetLayerWeight(1, 0f);
             }
-            
+
+            //Todo : add fps/fps aim to switch weapon pos
             onTpsAim?.Invoke(isAim);
 
+
             fullPlayer.controller.rotateOnMove = !isAim;
+        }
+
+        private void SwitchView(ViewMod mod)
+        {
+            currentView = views.First(v => v.viewMod == mod);
+
+            views.ForEach(v => v.ToggleCamera(false));
+            currentView.ToggleCamera(true);
+            fullPlayer.controller.ChangeCameraRoot(currentView.cameraRoot);
+
+            onViewChanged?.Invoke(mod);
         }
 
         private void UpdateAimFeedBack()
@@ -107,11 +117,11 @@ namespace FullController.Scripts.Player
 
             public void ToggleCamera(bool toggle)
             {
-                if(cameraFollow) 
+                if (cameraFollow)
                     cameraFollow.SetActive(toggle);
             }
         }
-        
+
         [Serializable]
         public enum ViewMod
         {
