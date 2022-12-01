@@ -1,7 +1,9 @@
 ﻿using FullController.Scripts.Player;
+using FullController.Scripts.Weapons;
 using UnityEngine;
+using UnityEngine.Animations.Rigging;
 
-namespace FullController.Scripts.Weapons
+namespace FullController.Scripts.Player
 {
     public class FullPlayerWeapons : MonoBehaviour
     {
@@ -10,6 +12,8 @@ namespace FullController.Scripts.Weapons
         public Transform fpsAimParent = null;
         public Transform tpsParent = null;
         public Transform weapon = null;
+        public FullPlayerAimIK leftHand;
+        public FullPlayerAimIK rightHand;
         
         private FullPlayerView.ViewMod viewMod;
 
@@ -30,23 +34,27 @@ namespace FullController.Scripts.Weapons
             weapon.localPosition = Vector3.zero;
             weapon.localRotation = Quaternion.identity;
             
-            Debug.Log("set weapon fps");
+            SetHandsIkRef();
         }
         private void SetWeaponFPSAim()
         {
             weapon.SetParent(fpsAimParent);
             weapon.localPosition = Vector3.zero;
             weapon.localRotation = Quaternion.identity;
-            
-            Debug.Log("set weapon fps aim");
         }
         private void SetWeaponTPS()
         {
             weapon.SetParent(tpsParent);
-            weapon.localPosition = Vector3.zero;
-            weapon.localRotation = Quaternion.identity;
+            weapon.localPosition = weapon.gameObject.GetComponent<WeaponTransform>().tpsTransform.position;
+            weapon.localEulerAngles = weapon.gameObject.GetComponent<WeaponTransform>().tpsTransform.rotation;
+        }
+
+        private void SetHandsIkRef()
+        {
+            WeaponGrabIK grabIK = weapon.gameObject.GetComponent<WeaponGrabIK>();
             
-            Debug.Log("set weapon tps");
+            leftHand.SetIkRef(grabIK.leftGrab.target, grabIK.leftGrab.hint);
+            rightHand.SetIkRef(grabIK.rightGrab.target, grabIK.rightGrab.hint);
         }
     }
 }

@@ -11,6 +11,7 @@ namespace FullController.Scripts.Player
     {
         public UnityEvent<ViewMod> onViewChanged = null;
         public UnityEvent<bool> onAim;
+        public UnityEvent<bool> onFPS;
 
         public Camera mainCamera = null;
         public Animator animator = null;
@@ -105,6 +106,7 @@ namespace FullController.Scripts.Player
             fullPlayer.controller.ChangeCameraRoot(currentView.cameraRoot);
 
             onViewChanged?.Invoke(mod);
+            onFPS?.Invoke(currentView.viewMod == ViewMod.Fps);
         }
 
         private void UpdateAimFeedBack()
