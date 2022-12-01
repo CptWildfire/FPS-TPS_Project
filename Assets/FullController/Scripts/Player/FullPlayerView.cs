@@ -10,7 +10,7 @@ namespace FullController.Scripts.Player
     public class FullPlayerView : FullPlayerComponent
     {
         public UnityEvent<ViewMod> onViewChanged = null;
-        public UnityEvent<bool> onTpsAim;
+        public UnityEvent<bool> onAim;
 
         public Camera mainCamera = null;
         public Animator animator = null;
@@ -68,6 +68,11 @@ namespace FullController.Scripts.Player
                     SwitchView(ViewMod.Tps_Aim);
                 }
 
+                if (currentView.viewMod == ViewMod.Fps)
+                {
+                    onViewChanged?.Invoke(ViewMod.Fps_Aim);
+                }
+
                 animator.SetLayerWeight(1, 1f);
             }
             else
@@ -76,12 +81,16 @@ namespace FullController.Scripts.Player
                 {
                     SwitchView(ViewMod.Tps);
                 }
+                
+                if (currentView.viewMod == ViewMod.Fps)
+                {
+                    onViewChanged?.Invoke(ViewMod.Fps);
+                }
 
                 animator.SetLayerWeight(1, 0f);
             }
-
-            //Todo : add fps/fps aim to switch weapon pos
-            onTpsAim?.Invoke(isAim);
+            
+            onAim?.Invoke(isAim);
 
 
             fullPlayer.controller.rotateOnMove = !isAim;

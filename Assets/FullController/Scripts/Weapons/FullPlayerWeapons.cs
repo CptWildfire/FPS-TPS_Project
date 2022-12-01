@@ -26,21 +26,27 @@ namespace FullController.Scripts.Weapons
 
         private void SetWeaponFPS()
         {
+            weapon.SetParent(fpsParent);
             weapon.localPosition = Vector3.zero;
             weapon.localRotation = Quaternion.identity;
-            weapon.SetParent(fpsParent);
+            
+            Debug.Log("set weapon fps");
         }
         private void SetWeaponFPSAim()
         {
+            weapon.SetParent(fpsAimParent);
             weapon.localPosition = Vector3.zero;
             weapon.localRotation = Quaternion.identity;
-            weapon.SetParent(fpsAimParent);
+            
+            Debug.Log("set weapon fps aim");
         }
         private void SetWeaponTPS()
         {
+            weapon.SetParent(tpsParent);
             weapon.localPosition = Vector3.zero;
             weapon.localRotation = Quaternion.identity;
-            weapon.SetParent(tpsParent);
+            
+            Debug.Log("set weapon tps");
         }
     }
 }
