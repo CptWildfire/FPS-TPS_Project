@@ -94,7 +94,7 @@ namespace FullController.Scripts.Player
             onAim?.Invoke(isAim);
 
 
-            fullPlayer.controller.rotateOnMove = !isAim;
+            fullPlayer.controller.rotateOnMove = !isAim && currentView.viewMod != ViewMod.Fps;
         }
 
         private void SwitchView(ViewMod mod)
@@ -105,6 +105,7 @@ namespace FullController.Scripts.Player
             currentView.ToggleCamera(true);
             fullPlayer.controller.ChangeCameraRoot(currentView.cameraRoot);
 
+            fullPlayer.controller.rotateOnMove = currentView.viewMod != ViewMod.Fps;
             onViewChanged?.Invoke(mod);
             onFPS?.Invoke(currentView.viewMod == ViewMod.Fps);
         }
